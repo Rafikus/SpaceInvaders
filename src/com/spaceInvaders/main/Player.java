@@ -22,7 +22,7 @@ public class Player extends GameObject
         super(x, y, id, scale);
         this.handler = handler;
         try {
-            img = ImageIO.read(new File(".\\SPRITES\\Player.png"));
+            img = ImageIO.read(new File("./SPRITES/Player.png"));
         }catch(IOException e){
             e.printStackTrace();
         }

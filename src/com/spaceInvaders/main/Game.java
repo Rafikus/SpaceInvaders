@@ -26,11 +26,12 @@ public class Game extends Canvas implements Runnable {
         {
             for (int j = 1; j < 3; j++)
             {
-            handler.addObject(new Enemy(scale*i*20, scale*j*10, ID.Enemy, scale, EnemyID.Small));
-            handler.addObject(new Enemy(scale*i*20, 70 + scale*j*10, ID.Enemy, scale, EnemyID.Medium));
-            handler.addObject(new Enemy(scale*i*20, 140 + scale*j*10, ID.Enemy, scale, EnemyID.Large));
+            handler.addObject(new Enemy(scale*i*20, scale*j*10, ID.Enemy, scale, EnemyID.Small, handler, this));
+            handler.addObject(new Enemy(scale*i*20, 70 + scale*j*10, ID.Enemy, scale, EnemyID.Medium, handler, this));
+            handler.addObject(new Enemy(scale*i*20, 140 + scale*j*10, ID.Enemy, scale, EnemyID.Large, handler, this));
             }
         }
+
     }
 
     public synchronized void start()

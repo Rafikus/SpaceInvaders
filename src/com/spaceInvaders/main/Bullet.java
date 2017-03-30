@@ -21,12 +21,11 @@ public class Bullet extends GameObject {
         this.handler = handler;
         this.game = game;
         try {
-            img = ImageIO.read(new File(".\\SPRITES\\Bullet.png"));
+            img = ImageIO.read(new File("./SPRITES/Bullet.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
         this.velY = velY;
-        System.out.println("SHOOT!");
     }
 
     private void die()
@@ -34,7 +33,7 @@ public class Bullet extends GameObject {
         if(this.y < 0 || this.y > game.HEIGHT)
         {
             handler.removeObject(this);
-            System.out.println("I dieded");
+            System.out.println("I died");
         }
     }
 
@@ -43,7 +42,12 @@ public class Bullet extends GameObject {
         for(int i = 0; i < handler.objects.size(); i++)
         {
             GameObject tempObject = handler.objects.get(i);
-            if(getBounds().intersects(tempObject.getBounds()) && tempObject.getId() == ID.Enemy)
+            if(this.id == ID.PlayerBullet && tempObject.getId() == ID.Enemy && getBounds().intersects(tempObject.getBounds()))
+            {
+                handler.removeObject(tempObject);
+                handler.removeObject(this);
+            }
+            if(this.id == ID.EnemyBullet && tempObject.getId() == ID.Player && getBounds().intersects(tempObject.getBounds()))
             {
                 handler.removeObject(tempObject);
                 handler.removeObject(this);
